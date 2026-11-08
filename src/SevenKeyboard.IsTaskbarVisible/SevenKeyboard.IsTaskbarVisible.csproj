@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Version>1.0.1</Version>
+    <RootNamespace>SevenKeyboard</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsAotCompatible>true</IsAotCompatible>
+    <MonitorExGetUtilsProjectPath Condition="'$(MonitorExGetUtilsProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../monitor-ex-get-utils/main-cs/src/SevenKeyboard.MonitorExGetUtils/SevenKeyboard.MonitorExGetUtils.csproj</MonitorExGetUtilsProjectPath>
+    <WinGetWhichMonitorProjectPath Condition="'$(WinGetWhichMonitorProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../win-get-which-monitor/main-cs/src/SevenKeyboard.WinGetWhichMonitor/SevenKeyboard.WinGetWhichMonitor.csproj</WinGetWhichMonitorProjectPath>
+    <GetTaskbarHwndProjectPath Condition="'$(GetTaskbarHwndProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../get-taskbar-hwnd/main-cs/src/SevenKeyboard.GetTaskbarHwnd/SevenKeyboard.GetTaskbarHwnd.csproj</GetTaskbarHwndProjectPath>
+    <LibraryBuildTargetsPath Condition="'$(LibraryBuildTargetsPath)' == ''">$(MSBuildThisFileDirectory)../../../../library-build/main-cs/CheckLibraryVersions.targets</LibraryBuildTargetsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(MonitorExGetUtilsProjectPath)" MinimumVersion="2.0.0" />
+    <ProjectReference Include="$(WinGetWhichMonitorProjectPath)" MinimumVersion="2.0.0" />
+    <ProjectReference Include="$(GetTaskbarHwndProjectPath)" MinimumVersion="1.0.0" />
+    <InternalsVisibleTo Include="IsTaskbarVisible.Tests" />
+  </ItemGroup>
+  <Import Project="$(LibraryBuildTargetsPath)" />
+</Project>
