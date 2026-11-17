@@ -10,7 +10,7 @@
     <MonitorExGetUtilsProjectPath Condition="'$(MonitorExGetUtilsProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../monitor-ex-get-utils/main-cs/src/SevenKeyboard.MonitorExGetUtils/SevenKeyboard.MonitorExGetUtils.csproj</MonitorExGetUtilsProjectPath>
     <WinGetWhichMonitorProjectPath Condition="'$(WinGetWhichMonitorProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../win-get-which-monitor/main-cs/src/SevenKeyboard.WinGetWhichMonitor/SevenKeyboard.WinGetWhichMonitor.csproj</WinGetWhichMonitorProjectPath>
     <GetTaskbarHwndProjectPath Condition="'$(GetTaskbarHwndProjectPath)' == ''">$(MSBuildThisFileDirectory)../../../../get-taskbar-hwnd/main-cs/src/SevenKeyboard.GetTaskbarHwnd/SevenKeyboard.GetTaskbarHwnd.csproj</GetTaskbarHwndProjectPath>
-    <LibraryBuildTargetsPath Condition="'$(LibraryBuildTargetsPath)' == ''">$(MSBuildThisFileDirectory)../../../../library-build/main-cs/CheckLibraryVersions.targets</LibraryBuildTargetsPath>
+    <LibraryBuildTargetsPath Condition="'$(LibraryBuildTargetsPath)' == ''">$(MSBuildThisFileDirectory)../../build/CheckLibraryVersions.targets</LibraryBuildTargetsPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="$(MonitorExGetUtilsProjectPath)" MinimumVersion="2.0.0" />

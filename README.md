@@ -17,8 +17,10 @@ The caller's DPI context is unchanged.
 
 Dependencies are external project references: MonitorExGetUtils 2.x (>=2.0.0),
 WinGetWhichMonitor 2.x (>=2.0.0), and GetTaskbarHwnd 1.x (>=1.0.0).
-The shared `library-build` target checks minimum versions and matching majors.
-Override the corresponding `*ProjectPath` or `LibraryBuildTargetsPath`
-MSBuild properties when projects are elsewhere. No dependency sources are copied.
+The monitor projects also need DisplayMonitorInfoManager 2.x (>=2.0.0).
+Use each dependency's `main-cs` branch under a common parent in `<repo>/main-cs`.
+The bundled `build/CheckLibraryVersions.targets` checks minimum versions and
+matching majors. Override the corresponding `*ProjectPath` MSBuild properties
+when projects are elsewhere. Dependency sources remain in their own repositories.
 
 [Build and test instructions](tests/README.md).

@@ -1,0 +1,16 @@
+<Project>
+  <Target Name="CheckLibraryVersions" BeforeTargets="ResolveProjectReferences"
+          Outputs="%(ProjectReference.Identity)">
+    <PropertyGroup>
+      <_DependencyVersion />
+    </PropertyGroup>
+    <XmlPeek Condition="'%(ProjectReference.MinimumVersion)' != ''"
+             XmlInputPath="%(ProjectReference.FullPath)" Query="/Project/PropertyGroup/Version/text()">
+      <Output TaskParameter="Result" PropertyName="_DependencyVersion" />
+    </XmlPeek>
+    <Error Condition="'%(ProjectReference.MinimumVersion)' != '' And '$(_DependencyVersion)' == ''"
+           Code="SKLIB001" Text="%(ProjectReference.Identity) must declare Version." />
+    <Error Condition="'%(ProjectReference.MinimumVersion)' != '' And ($([System.Version]::Parse('$(_DependencyVersion)').Major) != $([System.Version]::Parse('%(ProjectReference.MinimumVersion)').Major) Or $([MSBuild]::VersionLessThan('$(_DependencyVersion)', '%(ProjectReference.MinimumVersion)')))"
+           Code="SKLIB002" Text="%(ProjectReference.Identity): version $(_DependencyVersion) requires the same major and at least %(ProjectReference.MinimumVersion)." />
+  </Target>
+</Project>
